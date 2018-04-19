@@ -5,7 +5,7 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1 class="fa fa-users"> Admin Management</h1>
+    <h1 class="fa fa-map-marker"> Location Management</h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                          <div class="panel-heading">
-                         <a href="{{ route('admin.create') }}" class="btn btn-success">Add </a>
+                         <a href="{{ route('location.create') }}" class="btn btn-success">Add Location </a>
                         </div>
                      @if (Session::has('message'))
                         <div id="alert" class="alert alert-success">{{ Session::get('message') }}</div>
@@ -27,45 +27,33 @@
                             <div class="pre-scrollable">
                             <table width="100%" class="table table-bordered table-striped table-hover table-responsive" id="table">
                                 <thead>
-                                    <?php $i=1; ?>
+                                   
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Role</th>
                                         <th>Location</th>
+                                        <th>Status</th>
                                         <th>Action</th>
-
-                                        
                                     </tr>
                                 </thead> 
                                <tbody>
-                                <?php $i=1; foreach($admins as $admin){?>
+                             
+                                <?php $i=1; foreach ($admin_locations as  $value) { ?>
                                     <tr class="odd gradeX">
                                        <td><?= $i++;?></td>
-                                        <td><?= $admin->name;?></td>
-                                         <td><?= $admin->email;?></td>
-                                         <td><?= $admin->phone;?></td>
-                                        <?php foreach($role as $rol){
-                                            if($rol->id== $admin->role){?>
-                                         <td><?= $rol->name;?></td>
-                                         <?php }?>
-                                         <?php }?>
-                                    <?php foreach($location as $loc){
-                                         if($loc->id == $admin->location) { ?>
-                                         <td><?= $loc->sub_location;?></td>
-                                        <?php  } ?>
-
+                                        <td><?= $value->locationName; ?></td>
+                                        <?php if($value->status){ ?>
+                                         <td>Active</td>
+                                         <?php } else { ?>
+                                          <td>Deactive</td>
                                         <?php } ?>
-
-                                        <td><a  class="fa fa-pencil btn btn-success" href="{{ route('admin.edit',$admin->id) }}"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{ route('admin.destroy',$admin->id) }}" onclick="return confirm('Are you sure you want to delete this item?');">
+                                        <td><a class="fa fa-pencil btn btn-success" href="{{url('/locations/location-edit')}}/<?= $value->id; ?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{url('/locations/venue-delete/')}}/<?= $value->id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
                                             </a>
+                                            <a  class="fa fa-eye btn btn-primary" href="{{url('/locations/venue-detail')}}/<?= $value->id; ?>"> View Venue</a>&nbsp;&nbsp;&nbsp;
                                         </td>
                                     </tr>
-                                    <?php }?>
+                                    
                                 </tbody>
-
+                                <?php } ?>
 
                             </table>
                             </div><!-- /.table-responsive -->

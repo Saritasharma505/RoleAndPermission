@@ -165,7 +165,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
@@ -229,7 +230,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
          'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

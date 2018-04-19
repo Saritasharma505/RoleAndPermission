@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'green',
+    'skin' => 'red-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -116,7 +116,7 @@ return [
         ],
         [
             'text'        => 'Dashboard',
-            'url'         => 'admin/pages',
+            'url'         => '/dashboard',
             'icon'        => 'dashboard',
             'label_color' => 'success',
         ],
@@ -134,13 +134,19 @@ return [
                 ],
                 [
                     'text'    => 'User Role',
-                    'url'     => '#',
+                    'url'     => '/admin/role',
                     'icon' =>'id-badge',
                    
                 ],
                 [
+                    'text'    => 'User Permission',
+                    'url'     => '/admin/permission',
+                    'icon' =>'address-card-o',
+                   
+                ],
+                [
                     'text' => 'Locations',
-                    'url'  => '#',
+                    'url'  => '/locations',
                     'icon' => 'map-marker',
                 ],
                  [
@@ -206,6 +212,12 @@ return [
                     'url'  => '#',
                 ],
             ],
+        ],
+         [
+            'text'        => 'Customer Support',
+            'url'         => 'admin/customersupport',
+            'icon'        => 'users',
+            'label_color' => 'success',
         ],
         // End All Reports Menu
     ],
